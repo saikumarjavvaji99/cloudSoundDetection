@@ -1,0 +1,55 @@
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<title>Sound Detection</title>
+
+    <style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+</head>
+<body>
+    <br/>  <br/>  <br/>
+    <center>
+    <table style="width:75%">
+        <tr bgcolor="#5D6D7E">
+            <td><h3> Sound Type </h3></td>
+            <td><h3> Confidence </h3></td>
+            <td><h3> Timestamp </h3></td>
+            <td><h3> Location </h3></td>
+            <td><h3> Device Name </h3></td>
+            <td><h3> Audio  </h3></td>
+
+        </tr>
+        <tr th:each="sound : ${sounds}">
+            <td><h4 th:text="${sound.type}"></h4></td>
+            <td><h4 th:text="${sound.confidence}"></h4></td>
+            <td><h4 th:text="${sound.timestamp}"></h4></td>
+            <td><h4 th:text="${sound.location}"></h4></td>
+            <td><h4 th:text="${sound.deviceName}"></h4></td>
+            <td><audio controls>
+                <source  th:src="${sound.audioUrl}" type="audio/wav"></source>
+            </audio>
+
+            </td>
+        </tr>
+    </table>
+
+    </center>
+<script>
+var x = document.getElementById("myAudio");
+
+function playAudio() {
+
+ alert("I am an alert box!");
+  x.play();
+}
+
+function pauseAudio() {
+  x.pause();
+}
+</script>
+
+
+</body>
+
